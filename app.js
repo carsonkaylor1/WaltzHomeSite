@@ -34,18 +34,17 @@ const text = 'Hello from Vonage SMS API';
 //   )
 // }
 
-// var MemoryStore = require('memorystore')(session)
-// // app.use("/node_modules", express.static('node_modules'));
-// app.use(express.static(process.env.STATIC_DIR)); 
-// app.use(session({
-//     cookie: { maxAge: 86400000 },
-//     store: new MemoryStore({
-//       checkPeriod: 86400000 // prune expired entries every 24h
-//     }),
-//     resave: false,
-//     saveUninitialized: true,
-//     secret: 'keyboard cat'
-// }))
+var MemoryStore = require('memorystore')(session)
+app.use(express.static(process.env.STATIC_DIR)); 
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+    resave: false,
+    saveUninitialized: true,
+    secret: 'keyboard cat'
+}))
 
 // app.use(express.static(process.env.STATIC_DIR));
 // app.use(
@@ -63,14 +62,14 @@ const text = 'Hello from Vonage SMS API';
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static(process.env.STATIC_DIR));
-app.use(
-  session({
-    secret: "Set this to a random string that is kept secure",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
+// app.use(express.static(process.env.STATIC_DIR));
+// app.use(
+//   session({
+//     secret: "Set this to a random string that is kept secure",
+//     resave: false,
+//     saveUninitialized: true,
+//   })
+// );
 
 // Use JSON parser for all non-webhook routes
 app.use((req, res, next) => {
