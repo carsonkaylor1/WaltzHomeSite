@@ -1,0 +1,149 @@
+:root {
+	--gray-offset: rgba(0, 0, 0, 0.03);
+	--gray-border: rgba(0, 0, 0, 0.15);
+	--gray-light: rgba(0, 0, 0, 0.4);
+	--gray-mid: rgba(0, 0, 0, 0.7);
+	--gray-dark: rgba(0, 0, 0, 0.9);
+	--body-color: var(--gray-mid);
+	--headline-color: var(--gray-dark);
+	--accent-color: #0066f0;
+	--body-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	--radius: 6px;
+	--logo-image: url("https://storage.googleapis.com/stripe-sample-images/KAVHOLM.svg");
+	--form-width: 343px;
+  }
+  
+/* Base */
+* {
+	box-sizing: border-box;
+  }
+  body {
+	font-family: var(--body-font-family);
+	font-size: 16px;
+	color: var(--body-color);
+	-webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+	color: var(--body-color);
+	margin-top: 2px;
+	margin-bottom: 4px;
+  }
+  h1 {
+	font-size: 27px;
+	color: var(--headline-color);
+  }
+  h4 {
+	font-weight: 500;
+	font-size: 14px;
+	color: var(--gray-light);
+  }
+  
+  /* Layout */
+  .sr-root {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	max-width: 980px;
+	padding: 48px;
+	align-content: center;
+	justify-content: center;
+	height: auto;
+	min-height: 100vh;
+	margin: 0 auto;
+  }
+  .sr-header {
+	margin-bottom: 32px;
+  }
+  .sr-payment-summary {
+	margin-bottom: 20px;
+  }
+  .sr-main,
+  .sr-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	align-self: center;
+  }
+  .sr-main {
+	width: var(--form-width);
+  }
+  .sr-content {
+	padding-left: 48px;
+  }
+
+#logo{
+	display: block;
+	max-width: 100px;
+	margin: auto;
+}
+
+.sr-input:focus,
+input[type="text"]:focus,
+button:focus,
+.focused {
+  box-shadow: 0 0 0 1px rgba(50, 151, 211, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.07),
+    0 0 0 4px rgba(50, 151, 211, 0.3);
+  outline: none;
+  z-index: 9;
+}
+
+button {
+	background: var(--accent-color);
+	border-radius: var(--radius);
+	color: white;
+	border: 0;
+	padding: 12px 16px;
+	margin-top: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: block;
+	font-size: 18px;
+  }
+  button:hover {
+	filter: contrast(115%);
+  }
+  button:active {
+	transform: translateY(0px) scale(0.98);
+	filter: brightness(0.9);
+  }
+  button:disabled {
+	opacity: 0.5;
+	cursor: none;
+  }
+/* h1 {
+	font-family: 'Alegreya' ;
+}
+
+body {
+	font-family: 'Source Sans Pro' ;
+	width: 50%;
+	margin-left: 25%;
+	text-align: justify;
+	line-height: 1.7;
+	font-size: 18px;
+}
+
+input {
+	font-size: 18px;
+	text-align: center;
+}
+
+button {
+	font-size: 18px;
+	color: #fff;
+}
+
+#generate {
+	background-color: #09f;
+}
+
+#copy {
+	background-color: #0c6;
+} */
