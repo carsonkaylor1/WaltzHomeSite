@@ -35,7 +35,7 @@ const text = 'Hello from Vonage SMS API';
 // }
 
 var MemoryStore = require('memorystore')(session)
-app.use(express.static(process.env.STATIC_DIR)); 
+app.use(express.static(__dirname + '/public')); 
 app.use(session({
     cookie: { maxAge: 86400000 },
     store: new MemoryStore({
