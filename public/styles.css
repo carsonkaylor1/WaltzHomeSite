@@ -25,7 +25,6 @@
 	font-size: 16px;
 	color: var(--body-color);
 	-webkit-font-smoothing: antialiased;
-	margin: 0;
   }
   h1,
   h2,
@@ -53,12 +52,14 @@
 	flex-direction: column;
 	width: 100%;
 	max-width: 980px;
-	/* padding: 48px; */
+	padding: 48px;
 	align-content: center;
 	justify-content: center;
 	height: auto;
-	min-height: 100vh;
+	/* min-height: 88vh; */
 	margin: 0 auto;
+	margin-top: 15vh;
+	margin-bottom: 15vh;
   }
   .sr-header {
 	margin-bottom: 32px;
@@ -189,6 +190,16 @@ button {
 	justify-content: center;
 }
 
+/* .main-text-box{
+	display: flex;
+	flex-wrap: nowrap;
+	
+}
+
+.text-box{
+	width: 100px;
+} */
+
 .main-text{
 	font-family: 'Cormorant Garamond', serif;
 	font-weight: 600;
@@ -196,23 +207,12 @@ button {
 	text-align: center;
 	margin-top: 15px;
 	margin-bottom: 25px;
+	/* width: 100px; */
 }
 
 .submit-button-box{
+	justify-content: center;
 	margin: auto;
-}
-
-.footer-wrapper{
-	position: relative;
-	height: 100%;
-	width: 100%;
-}
-
-.footer{
-	position: absolute;
-	bottom: 0;
-	/* margin-top: 25%; */
-	/* padding-top: 25%; */
 }
 
 .sign-out-box{
@@ -250,7 +250,7 @@ button {
 
 @media only screen and (max-width:767px){
 	.main-text{
-		font-size: 24px;
+		/* font-size: 24px; */
 	}
 	button {
 		padding: 3px 4px;
