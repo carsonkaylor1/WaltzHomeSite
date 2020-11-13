@@ -56,7 +56,7 @@
 	align-content: center;
 	justify-content: center;
 	height: auto;
-	/* min-height: 88vh; */
+	min-height: 88vh;
 	margin: 0 auto;
 	margin-top: 15vh;
 	margin-bottom: 15vh;
@@ -190,11 +190,16 @@ button {
 	justify-content: center;
 }
 
+.main-text-box{
+	width: 100%;
+}
+
 /* .main-text-box{
 	display: flex;
 	flex-wrap: nowrap;
 	
 }
+
 
 .text-box{
 	width: 100px;
