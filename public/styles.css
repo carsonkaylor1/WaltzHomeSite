@@ -268,6 +268,7 @@ button {
 #success-message{
 	font-family: 'Cormorant Garamond', serif;
 	font-size: 36px;
+	font-weight: 500;
 }
 
 @media only screen and (max-width:767px){
@@ -329,7 +330,12 @@ button {
 		/* overflow-y: hidden; */
 	  }
 	  
+	  .success-message-box{
+		width: 50%;
+		margin-left: 25%;
+	}
 	  #success-message{
 		font-size: 24px;
 	}
+	
 }
