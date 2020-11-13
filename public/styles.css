@@ -65,6 +65,8 @@
 	margin-bottom: 0vh;
 	padding-top: 0;
 	padding-bottom: 0;
+	padding-right: 5%;
+	padding-left: 5%;
   }
   .sr-header {
 	margin-bottom: 32px;
@@ -213,6 +215,7 @@ button {
 
 .footer{
 	margin-top: 25%;
+	width: 100%;
 }
 
 .main-text{
@@ -243,10 +246,6 @@ button {
 	margin-bottom: 1%;
 	/* text-align: right; */
 	  
-}
-
-.email-box{
-	/* text-align: left; */
 }
 
 #user-email-text{
