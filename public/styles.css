@@ -25,8 +25,8 @@
 	font-size: 16px;
 	color: var(--body-color);
 	-webkit-font-smoothing: antialiased;
-	width: 50%;
-	margin-left: 25%;
+	width: 75%;
+	margin-left: 12.25%;
 	text-align: justify;
   }
   h1,
@@ -223,6 +223,8 @@ button {
 	margin: auto;
 }
 
+
+
 .sign-out-box{
 	text-align: right;
 }
@@ -271,8 +273,7 @@ button {
 		  font-size: 12px;
 		  padding: 5px 10px;
 		  border-radius: 5px;
-	  }
-	  
+	  }  
 	  #login-title-2{
 		font-size:20px;
 
@@ -280,6 +281,23 @@ button {
 	  #login-title-2-container{
 		  width: 100px;
 		  margin: auto;
+	  }
+	  #login{
+		font-size: 16px;
+		padding: 5px 10px;
+		border-radius: 5px;
+	}
+	  .sr-root{
+		  overflow-x: hidden;
+	  }
+	  body {
+		font-family: var(--body-font-family);
+		font-size: 16px;
+		color: var(--body-color);
+		-webkit-font-smoothing: antialiased;
+		width: 100%;
+		margin-left: 0%;
+		text-align: justify;
 	  }
 	/* #login-title-1{
 		font-family: 'Cormorant Garamond', serif;
@@ -298,5 +316,5 @@ button {
 		margin-bottom: 25px;
 		
 	} */
-}
 
+}
