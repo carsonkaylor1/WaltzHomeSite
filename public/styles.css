@@ -292,6 +292,8 @@ button {
 		overflow-y: hidden;
 		margin-top: 0vh;
 		margin-bottom: 2vh;
+		justify-content: start;
+		padding-top: 25px;
 	  }
 	  body {
 		font-family: var(--body-font-family);
@@ -303,6 +305,7 @@ button {
 		text-align: justify;
 		overflow-y: hidden;
 	  }
+	  
 	/* #login-title-1{
 		font-family: 'Cormorant Garamond', serif;
 		font-weight: 600;
