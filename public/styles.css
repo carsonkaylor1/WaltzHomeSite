@@ -25,6 +25,9 @@
 	font-size: 16px;
 	color: var(--body-color);
 	-webkit-font-smoothing: antialiased;
+	width: 50%;
+	margin-left: 25%;
+	text-align: justify;
   }
   h1,
   h2,
@@ -273,6 +276,10 @@ button {
 	  #login-title-2{
 		font-size:20px;
 
+	  }
+	  #login-title-2-container{
+		  width: 100px;
+		  margin: auto;
 	  }
 	/* #login-title-1{
 		font-family: 'Cormorant Garamond', serif;
