@@ -25,6 +25,7 @@
 	font-size: 16px;
 	color: var(--body-color);
 	-webkit-font-smoothing: antialiased;
+	margin: 0;
   }
   h1,
   h2,
@@ -49,17 +50,15 @@
   /* Layout */
   .sr-root {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	width: 100%;
 	max-width: 980px;
-	padding: 48px;
+	/* padding: 48px; */
 	align-content: center;
 	justify-content: center;
 	height: auto;
-	/* min-height: 88vh; */
+	min-height: 100vh;
 	margin: 0 auto;
-	margin-top: 15vh;
-	margin-bottom: 15vh;
   }
   .sr-header {
 	margin-bottom: 32px;
@@ -187,6 +186,7 @@ button {
 
 #submit-button{
 	margin: auto;
+	justify-content: center;
 }
 
 .main-text{
@@ -196,6 +196,16 @@ button {
 	text-align: center;
 	margin-top: 15px;
 	margin-bottom: 25px;
+}
+
+.submit-button-box{
+	margin: auto;
+}
+
+.footer{
+	position: absolute;
+	bottom: 0;
+	width: 100vh;
 }
 
 .sign-out-box{
@@ -247,12 +257,7 @@ button {
 		  padding: 5px 10px;
 		  border-radius: 5px;
 	  }
-	  .sr-root {
-		  margin-top: 2vh;
-		  margin-bottom: 2vh;
-		  padding-top: 1vh;
-		  padding-bottom: 1vh;
-	  }
+	  
 	/* #login-title-1{
 		font-family: 'Cormorant Garamond', serif;
 		font-weight: 600;
