@@ -71,9 +71,6 @@
   .sr-header {
 	margin-bottom: 32px;
   }
-  .sr-payment-summary {
-	margin-bottom: 20px;
-  }
   .sr-main,
   .sr-content {
 	display: flex;
@@ -264,6 +261,15 @@ button {
 	text-align: center;
 }
 
+.success-message-box{
+	text-align: center;
+}
+
+#success-message{
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 36px;
+}
+
 @media only screen and (max-width:767px){
 	.main-text{
 		font-size: 24px;
@@ -278,7 +284,7 @@ button {
 	  }
 	  #user-email-text{
 		font-size: 16px;
-		margin-top: 16px;
+		margin-top: 20px;
 	  }
 	  #sign-out-button{
 		  font-size: 12px;
@@ -323,22 +329,7 @@ button {
 		/* overflow-y: hidden; */
 	  }
 	  
-	/* #login-title-1{
-		font-family: 'Cormorant Garamond', serif;
-		font-weight: 600;
-		font-style: italic;
-		text-align: center;
-		font-size: 54px;
+	  #success-message{
+		font-size: 24px;
 	}
-	
-	#login-title-2{
-		font-family: 'Cormorant Garamond', serif;
-		font-weight: 600;
-		text-align: center;
-		font-size: 32px;
-		margin-top: 25px;
-		margin-bottom: 25px;
-		
-	} */
-
 }
