@@ -290,7 +290,7 @@ button {
 	  .sr-root{
 		overflow-x: hidden;
 		overflow-y: hidden;
-		margin-top: 2vh;
+		margin-top: 0vh;
 		margin-bottom: 2vh;
 	  }
 	  body {
@@ -301,6 +301,7 @@ button {
 		width: 100%;
 		margin-left: 0%;
 		text-align: justify;
+		overflow-y: hidden;
 	  }
 	/* #login-title-1{
 		font-family: 'Cormorant Garamond', serif;
