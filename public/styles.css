@@ -224,9 +224,8 @@ button {
 	color: black;
 }
 
-@media only screen and (max-width:767px){
+/* @media only screen and (max-width:767px){
 	#login-title-1{
-		/* font-family: 'Cormorant', serif; */
 		font-family: 'Cormorant Garamond', serif;
 		font-weight: 600;
 		font-style: italic;
@@ -235,9 +234,6 @@ button {
 	}
 	
 	#login-title-2{
-		/* font-family: 'Cormorant', serif; */
-		/* font-family: 'Raleway', sans-serif; */
-		/* font-family: 'Quicksand', sans-serif; */
 		font-family: 'Cormorant Garamond', serif;
 		font-weight: 600;
 		text-align: center;
@@ -246,5 +242,5 @@ button {
 		margin-bottom: 25px;
 		
 	}
-}
+} */
 
