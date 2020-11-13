@@ -255,7 +255,7 @@ button {
 
 @media only screen and (max-width:767px){
 	.main-text{
-		/* font-size: 24px; */
+		font-size: 12px;
 	}
 	button {
 		padding: 3px 4px;
@@ -270,6 +270,10 @@ button {
 		  border-radius: 5px;
 	  }
 	  
+	  #login-title-2{
+		font-size:20px;
+
+	  }
 	/* #login-title-1{
 		font-family: 'Cormorant Garamond', serif;
 		font-weight: 600;
