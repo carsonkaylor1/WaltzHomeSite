@@ -56,7 +56,7 @@
 	align-content: center;
 	justify-content: center;
 	height: auto;
-	min-height: 100vh;
+	min-height: 90vh;
 	margin: 0 auto;
   }
   .sr-header {
@@ -188,18 +188,39 @@ button {
 }
 
 .main-text{
-	font-family: 'Cormorant', serif;
-	font-size: 32px;
+	font-family: 'Cormorant Garamond', serif;
+	font-weight: 600;
+	font-size: 36px;
 	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 25px;
 }
 
 #sign-out-button{
 	position: absolute;
-	bottom: 10px;
-	right: 10px;
+	bottom: 20px;
+	right: 20px;
 	  
 }
 .sign-out-box{
 	margin: auto;
+}
+
+.error-message-text{
+	text-align: center;
+}
+
+.email-box{
+	text-align: center;
+}
+
+#user-email-text{
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 24px;
+	font-weight: 600;
+	color: black;
 }
 

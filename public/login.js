@@ -20,7 +20,7 @@
                         console.log('current user' + firebase.auth().currentUser);
                     })
                     .catch(function(error){
-                        console.log(error);
+                        document.getElementById("error-message").innerText = error.message;
                     });
                
                 }

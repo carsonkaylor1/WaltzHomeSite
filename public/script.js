@@ -52,6 +52,7 @@ console.log(error);
                       if(user){
                           console.log('user signed in');
                           console.log(user);
+                          document.getElementById('user-email-text').innerHTML += user.email;
                           
                       }
                       else{
