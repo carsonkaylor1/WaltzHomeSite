@@ -57,12 +57,14 @@
 	max-width: 980px;
 	padding: 48px;
 	align-content: center;
-	justify-content: center;
+	justify-content: start;
 	height: auto;
-	min-height: 88vh;
+	min-height: 80vh;
 	margin: 0 auto;
 	margin-top: 15vh;
-	margin-bottom: 15vh;
+	margin-bottom: 0vh;
+	padding-top: 0;
+	padding-bottom: 0;
   }
   .sr-header {
 	margin-bottom: 32px;
