@@ -224,7 +224,7 @@ button {
 	color: black;
 }
 
-@media screen and (max-width:767px){
+@media only screen and (max-width:767px){
 	#login-title-1{
 		/* font-family: 'Cormorant', serif; */
 		font-family: 'Cormorant Garamond', serif;
