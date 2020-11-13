@@ -202,10 +202,17 @@ button {
 	margin: auto;
 }
 
+.footer-wrapper{
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
 .footer{
 	position: absolute;
 	bottom: 0;
-	width: 100vh;
+	/* margin-top: 25%; */
+	/* padding-top: 25%; */
 }
 
 .sign-out-box{
