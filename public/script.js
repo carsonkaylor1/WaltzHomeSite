@@ -1,25 +1,3 @@
-
-
-// let txtButton = document.querySelector("#txt")
-
-// txtButton.addEventListener('click', send, false);
-
-// function send() {
-//   fetch('/success', {
-//     method: 'post',
-//     headers: {
-//       'Content-type': 'application/json'
-//     },
-//     body: JSON.stringify({number: to, text: text})
-//   })
-//   .then(function(res){
-//     console.log(res);
-//   })
-//   .catch(function(err){
-//     console.log(err);
-//   })
-// }
-
 let elmButton = document.querySelector("#submit");
 
 if (elmButton) {
@@ -49,3 +27,43 @@ if (elmButton) {
     false
   );
 }
+
+async function access(){
+  try{
+    var sellerRef = firebase.firestore().collection("sellers");
+
+console.log(sellerRef.id);
+var sellerRes = await sellerRef.where('authSellerId', '==', 'EwIRGQvsEGebULc1gysEYMPrQuW2').get();
+if(sellerRes.empty){
+  console.log('no matching results');
+  return;
+}
+sellerRes.forEach(doc => {
+  console.log(doc.id, '=>', doc.data());
+})
+}
+catch(error){
+console.log(error);
+}
+  }
+
+  function checkIfLoggedIn(){
+                  firebase.auth().onAuthStateChanged(function(user){
+                      if(user){
+                          console.log('user signed in');
+                          console.log(user);
+                          
+                      }
+                      else{
+                          console.log('user not signed in');
+                          window.location = '/';
+                      }
+                  })
+              }
+    window.onload = function(){
+    checkIfLoggedIn();}
+    
+
+    function signOut(){
+      firebase.auth().signOut();
+    }

@@ -11,6 +11,9 @@
 	--radius: 6px;
 	--logo-image: url("https://storage.googleapis.com/stripe-sample-images/KAVHOLM.svg");
 	--form-width: 343px;
+	/* background: rgb(247,247,247);
+	background: radial-gradient(circle, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 75%, rgba(0,212,255,1) 100%); */
+
   }
   
 /* Base */
@@ -71,7 +74,7 @@
 	align-self: center;
   }
   .sr-main {
-	width: var(--form-width);
+	width: 500px;
   }
   .sr-content {
 	padding-left: 48px;
@@ -147,3 +150,49 @@ button {
 #copy {
 	background-color: #0c6;
 } */
+
+.login-header{
+	margin: auto;
+}
+
+#login-title-1{
+	font-family: 'Cormorant', serif;
+	font-weight: 600;
+	font-style: italic;
+	text-align: center;
+}
+
+#login-title-2{
+	font-family: 'Cormorant', serif;
+	font-weight: 600;
+	text-align: center;
+	font-size: 32px;
+	
+}
+
+.input-credentials{
+	margin: auto;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+#submit-button{
+	margin: auto;
+}
+
+.main-text{
+	font-family: 'Cormorant', serif;
+	font-size: 32px;
+	text-align: center;
+}
+
+#sign-out-button{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	  
+}
+.sign-out-box{
+	margin: auto;
+}
+

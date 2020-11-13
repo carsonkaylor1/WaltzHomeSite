@@ -6,36 +6,34 @@ const { resolve } = require("path");
 const session = require("express-session");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const Nexmo = require("nexmo");
-// const socketio = require("socket.io");
+var firebase = require("firebase/app");
+
+// Add the Firebase products that you want to use
+require("firebase/auth");
+require("firebase/firestore");
 
 const app = express();
 const port = process.env.PORT || 4242;
 
-//Init Nexmo
-// const nexmo = new Nexmo({
-//   apiKey: process.env.NEXMO_API_KEY,
-//   apiSecret: process.env.NEXMO_SECRET_KEY,
-// }, {debug: true});
+const firebaseConfig = {
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: "waltz-c694e.firebaseapp.com",
+  databaseURL: "https://waltz-c694e.firebaseio.com",
+  projectId: "waltz-c694e",
+  storageBucket: "waltz-c694e.appspot.com",
+  messagingSenderId: "305484219833",
+  appId: "1:305484219833:web:94f6a94a90b502b31f6268",
+  measurementId: "G-WN91ZDZW31"
+};
 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-const from = '19122251516';
-const to = '12404572278';
-const text = 'Hello from Vonage SMS API';
-
-// let txtButton = document.querySelector("#txt");
-
-// if (txtButton) {
-//   console.log('hello')
-//   txtButton.addEventListener(
-//     "click", e => {
-//       console.log('clicked');
-//       nexmo.message.sendSms(from, to, text);
-//     }
-//   )
-// }
+const firestore = firebase.firestore();
+const auth = firebase.auth();
 
 var MemoryStore = require('memorystore')(session)
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static(__dirname + '/public', {index: 'login.html'})); 
 app.use(session({
     cookie: { maxAge: 86400000 },
     store: new MemoryStore({
@@ -46,30 +44,11 @@ app.use(session({
     secret: 'keyboard cat'
 }))
 
-// app.use(express.static(process.env.STATIC_DIR));
-// app.use(
-//   session({
-//     secret: "Set this to a random string that is kept secure",
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// );
-
-
 // app.use(express.static(process.env.STATIC_DIR))
 
 
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: true}));
-
-// app.use(express.static(process.env.STATIC_DIR));
-// app.use(
-//   session({
-//     secret: "Set this to a random string that is kept secure",
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// );
 
 // Use JSON parser for all non-webhook routes
 app.use((req, res, next) => {
@@ -83,6 +62,52 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/index.html");
   res.sendFile(path);
+});
+
+//List connected accounts
+app.post("/get-accounts", async (req, res) => {
+  const accounts = await stripe.accounts.list({
+    limit: 1
+  });
+  console.log(accounts.data[0].id);
+  res.send({
+    result: accounts.data[0].id
+  })
+  // console.log(res);
+  // bodyParser.json(accounts);
+  // console.log(accounts);
+//   try{
+//   var sellerRef = firestore.collection("sellers");
+//   console.log(sellerRef.id);
+//   var sellerRes = await sellerRef.where('authSellerId', '==', 'EwIRGQvsEGebULc1gysEYMPrQuW2').get();
+//   if(sellerRes.empty){
+//     console.log('no matching results');
+//     return;
+//   }
+//   sellerRes.forEach(doc => {
+//     console.log(doc.id, '=>', doc.data());
+//   })
+// }
+// catch(error){
+//   console.log(error);
+// }
+  
+  
+})
+
+app.get("/users", async (req, res) => {
+  try {
+      const userQuerySnapshot = await db.collection(userCollection).get();
+     
+      userQuerySnapshot.forEach(
+          (doc)=>{
+              console.log(doc);
+          }
+      );
+      res.status(200).json(users);
+  } catch (error) {
+      res.status(500).send(error);
+  }
 });
 
 app.post("/onboard-user", async (req, res) => {
@@ -117,17 +142,6 @@ app.get("/onboard-user/refresh", async (req, res) => {
     });
   }
 });
-
-//Catch send text
-app.post('/public/success.html', (req, res) => {
-  // res.send(req.body);
-  // console.log(req.body);
-  // const number = req.body.number;
-  // const text = req.body.text;
-  console.log('sent');
-  nexmo.message.sendSms(from, to, text)
-  ;
-})
 
 function generateAccountLink(accountID, origin) {
   return stripe.accountLinks
