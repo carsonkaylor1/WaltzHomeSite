@@ -245,6 +245,9 @@ button {
 		  padding: 5px 10px;
 		  border-radius: 5px;
 	  }
+	  .sr-root{
+		  padding-top: 10px;
+	  }
 	/* #login-title-1{
 		font-family: 'Cormorant Garamond', serif;
 		font-weight: 600;
