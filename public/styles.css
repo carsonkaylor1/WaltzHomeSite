@@ -288,7 +288,10 @@ button {
 		border-radius: 5px;
 	}
 	  .sr-root{
-		  overflow-x: hidden;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		margin-top: 2vh;
+		margin-bottom: 2vh;
 	  }
 	  body {
 		font-family: var(--body-font-family);
