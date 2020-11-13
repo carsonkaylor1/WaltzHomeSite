@@ -56,8 +56,10 @@
 	align-content: center;
 	justify-content: center;
 	height: auto;
-	min-height: 88vh;
+	/* min-height: 88vh; */
 	margin: 0 auto;
+	margin-top: 15vh;
+	margin-bottom: 15vh;
   }
   .sr-header {
 	margin-bottom: 32px;
@@ -245,8 +247,11 @@ button {
 		  padding: 5px 10px;
 		  border-radius: 5px;
 	  }
-	  .sr-root{
-		  padding-top: 10px;
+	  .sr-root {
+		  margin-top: 2vh;
+		  margin-bottom: 2vh;
+		  padding-top: 1vh;
+		  padding-bottom: 1vh;
 	  }
 	/* #login-title-1{
 		font-family: 'Cormorant Garamond', serif;
