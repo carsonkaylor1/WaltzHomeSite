@@ -198,8 +198,8 @@ button {
 
 #sign-out-button{
 	position: absolute;
-	bottom: 20px;
-	right: 20px;
+	bottom: 25px;
+	right: 25px;
 	  
 }
 .sign-out-box{
@@ -216,11 +216,26 @@ button {
 
 #user-email-text{
 	position: absolute;
-	bottom: 10px;
-	left: 20px;
+	bottom: 5px;
+	left: 25px;
 	font-family: 'Cormorant Garamond', serif;
 	font-size: 24px;
 	font-weight: 600;
 	color: black;
+}
+
+@media screen and (max-width:767px){
+	.sr-root {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		max-width: 980px;
+		padding: 48px;
+		align-content: center;
+		justify-content: center;
+		height: auto;
+		min-height: 50vh;
+		margin: 0 auto;
+	  }
 }
 
