@@ -115,6 +115,7 @@ button {
 	transition: all 0.2s ease;
 	display: block;
 	font-size: 18px;
+	font-family: 'Cormorant Garamond', serif;
   }
   button:hover {
 	filter: contrast(115%);
@@ -210,6 +211,10 @@ button {
 	width: 100px;
 } */
 
+.footer{
+	margin-top: 25%;
+}
+
 .main-text{
 	font-family: 'Cormorant Garamond', serif;
 	font-weight: 600;
@@ -262,7 +267,11 @@ button {
 
 @media only screen and (max-width:767px){
 	.main-text{
-		font-size: 12px;
+		font-size: 24px;
+	}
+	.main-text-box{
+		width: 50%;
+		margin-left: 25%;
 	}
 	button {
 		padding: 3px 4px;
@@ -288,7 +297,13 @@ button {
 		font-size: 16px;
 		padding: 5px 10px;
 		border-radius: 5px;
-	}
+		}
+
+		#submit{
+			padding: 8px 12px;
+			border-radius: 5px;
+		}
+
 	  .sr-root{
 		overflow-x: hidden;
 		overflow-y: hidden;
