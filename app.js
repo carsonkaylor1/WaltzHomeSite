@@ -66,12 +66,17 @@ app.post("/get-accounts", async (req, res) => {
   })
 })
 
+// app.post("/accounts", async (req, res) => {
+//   const account = awaite stripe.accounts.
+// })
+
 app.post("/onboard-user", async (req, res) => {
   try {
     console.log('!!' + req.session.accountID)
     const account = await stripe.accounts.create({type: "standard"});
     req.session.accountID = account.id;
     console.log('??' + req.session.accountID)
+    console.log('req is ' + account);
     const origin = `${req.headers.origin}`;
     const accountLinkURL = await generateAccountLink(account.id, origin);
     console.log('!!??' + accountLinkURL)
@@ -85,7 +90,7 @@ app.post("/onboard-user", async (req, res) => {
 
 app.get("/onboard-user/refresh", async (req, res) => {
   
-  
+  // console.log('refresh +' + req.session.accountID)
   if (!req.session.accountID) {
     res.redirect("/");
     return;
@@ -103,8 +108,24 @@ app.get("/onboard-user/refresh", async (req, res) => {
   }
 });
 
-function generateAccountLink(accountID, origin) {
-  return stripe.accountLinks
+async function generateAccountLink(accountID, origin) {
+  const account = await stripe.accounts.retrieve(
+    accountID
+  );
+  console.log('account info ' + account.requirements.currently_due);
+  if(account.requirements.currently_due){
+    console.log('account info 2 ' + account.requirements.currently_due);
+    return stripe.accountLinks
+    .create({
+      type: "account_onboarding",
+      account: accountID,
+      refresh_url: `${origin}/onboard-user/refresh`,
+      return_url: `${origin}/index.html`,
+    })
+    .then((link) => link.url);
+  }
+  else{
+    return stripe.accountLinks
     .create({
       type: "account_onboarding",
       account: accountID,
@@ -112,6 +133,8 @@ function generateAccountLink(accountID, origin) {
       return_url: `${origin}/success.html`,
     })
     .then((link) => link.url);
+  }
+  
 }
 
 // Match the raw body to content type application/json
@@ -129,6 +152,7 @@ app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, respo
     case 'account.updated':
       const accountIntent = event.data.object;
       console.log('account Intent: ' + accountIntent);
+      window.location = '/success.html'
       // Then define and call a method to handle the successful payment intent.
       // handlePaymentIntentSucceeded(paymentIntent);
       break;
