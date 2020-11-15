@@ -29,9 +29,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const firestore = firebase.firestore();
-const auth = firebase.auth();
-
 var MemoryStore = require('memorystore')(session)
 app.use(express.static(__dirname + '/public', {index: 'login.html'})); 
 app.use(session({
@@ -43,12 +40,6 @@ app.use(session({
     saveUninitialized: true,
     secret: 'keyboard cat'
 }))
-
-// app.use(express.static(process.env.STATIC_DIR))
-
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
 
 // Use JSON parser for all non-webhook routes
 app.use((req, res, next) => {
@@ -73,50 +64,17 @@ app.post("/get-accounts", async (req, res) => {
   res.send({
     result: accounts.data[0].id
   })
-  // console.log(res);
-  // bodyParser.json(accounts);
-  // console.log(accounts);
-//   try{
-//   var sellerRef = firestore.collection("sellers");
-//   console.log(sellerRef.id);
-//   var sellerRes = await sellerRef.where('authSellerId', '==', 'EwIRGQvsEGebULc1gysEYMPrQuW2').get();
-//   if(sellerRes.empty){
-//     console.log('no matching results');
-//     return;
-//   }
-//   sellerRes.forEach(doc => {
-//     console.log(doc.id, '=>', doc.data());
-//   })
-// }
-// catch(error){
-//   console.log(error);
-// }
-  
-  
 })
-
-app.get("/users", async (req, res) => {
-  try {
-      const userQuerySnapshot = await db.collection(userCollection).get();
-     
-      userQuerySnapshot.forEach(
-          (doc)=>{
-              console.log(doc);
-          }
-      );
-      res.status(200).json(users);
-  } catch (error) {
-      res.status(500).send(error);
-  }
-});
 
 app.post("/onboard-user", async (req, res) => {
   try {
+    console.log('!!' + req.session.accountID)
     const account = await stripe.accounts.create({type: "standard"});
     req.session.accountID = account.id;
-
+    console.log('??' + req.session.accountID)
     const origin = `${req.headers.origin}`;
     const accountLinkURL = await generateAccountLink(account.id, origin);
+    console.log('!!??' + accountLinkURL)
     res.send({ url: accountLinkURL });
   } catch (err) {
     res.status(500).send({
@@ -126,6 +84,8 @@ app.post("/onboard-user", async (req, res) => {
 });
 
 app.get("/onboard-user/refresh", async (req, res) => {
+  
+  
   if (!req.session.accountID) {
     res.redirect("/");
     return;
@@ -154,4 +114,40 @@ function generateAccountLink(accountID, origin) {
     .then((link) => link.url);
 }
 
+// Match the raw body to content type application/json
+app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
+  let event;
+
+  try {
+    event = JSON.parse(request.body);
+  } catch (err) {
+    response.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  // Handle the event
+  switch (event.type) {
+    case 'account.updated':
+      const accountIntent = event.data.object;
+      console.log('account Intent: ' + accountIntent);
+      // Then define and call a method to handle the successful payment intent.
+      // handlePaymentIntentSucceeded(paymentIntent);
+      break;
+    case 'payment_method.attached':
+      const paymentMethod = event.data.object;
+      console.log('payment method: ' + paymentMethod);
+      // Then define and call a method to handle the successful attachment of a PaymentMethod.
+      // handlePaymentMethodAttached(paymentMethod);
+      break;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+
+  // Return a response to acknowledge receipt of the event
+  response.json({received: true});
+});
+
+app.listen(8000, () => console.log('Running on port 8000'));
+
 app.listen(port, () => console.log(`Node server listening on port ${port}!`));
+
