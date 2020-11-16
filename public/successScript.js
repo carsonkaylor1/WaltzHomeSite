@@ -24,7 +24,6 @@ const stripeAccountPromise = new Promise((resolve, reject) => {
 }).catch(e => window.location = e );
 
 stripeAccountPromise.then((accountID) => {
-  document.getElementById("success-message").innerHTML = 'You have successfully registered with Waltz!';
   const firebasePromise = new Promise((resolve, reject) => {
 
     firebase.auth().onAuthStateChanged(function(user){
@@ -43,6 +42,7 @@ stripeAccountPromise.then((accountID) => {
   
   firebasePromise.then((email) => {
     console.log(email);
+    document.getElementById("success-message").innerHTML = 'You have successfully registered with Waltz!';
     var sellerRef = firebase.firestore().collection("sellers");
     sellerRef.where('email', '==', email).get()
     .then(function(querySnapshot) {
