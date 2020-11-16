@@ -24,11 +24,12 @@ const stripeAccountPromise = new Promise((resolve, reject) => {
 }).catch(e => window.location = e );
 
 stripeAccountPromise.then((accountID) => {
+  document.getElementById("success-message").innerHTML = 'You have successfully registered with Waltz!';
   const firebasePromise = new Promise((resolve, reject) => {
 
     firebase.auth().onAuthStateChanged(function(user){
       if(user){
-          document.getElementById("success-message").innerHTML = 'You have successfully registered with Waltz!';
+          // document.getElementById("success-message").innerHTML = 'You have successfully registered with Waltz!';
           console.log('user signed in');
           console.log(user.email);
           resolve(user.email);
