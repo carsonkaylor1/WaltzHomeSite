@@ -61,25 +61,19 @@ app.post("/get-accounts", async (req, res) => {
     limit: 1
   });
   console.log(accounts.data[0].id);
+  console.log('requirements ' + accounts.data[0].details_submitted);
   res.send({
-    result: accounts.data[0].id
+    result: accounts.data[0].id,
+    details: accounts.data[0].details_submitted
   })
 })
 
-// app.post("/accounts", async (req, res) => {
-//   const account = awaite stripe.accounts.
-// })
-
 app.post("/onboard-user", async (req, res) => {
   try {
-    console.log('!!' + req.session.accountID)
     const account = await stripe.accounts.create({type: "standard"});
     req.session.accountID = account.id;
-    console.log('??' + req.session.accountID)
-    console.log('req is ' + account);
     const origin = `${req.headers.origin}`;
     const accountLinkURL = await generateAccountLink(account.id, origin);
-    console.log('!!??' + accountLinkURL)
     res.send({ url: accountLinkURL });
   } catch (err) {
     res.status(500).send({
@@ -109,69 +103,16 @@ app.get("/onboard-user/refresh", async (req, res) => {
 });
 
 async function generateAccountLink(accountID, origin) {
-  const account = await stripe.accounts.retrieve(
-    accountID
-  );
-  console.log('account info ' + account.requirements.currently_due);
-  if(account.requirements.currently_due){
-    console.log('account info 2 ' + account.requirements.currently_due);
     return stripe.accountLinks
     .create({
       type: "account_onboarding",
       account: accountID,
       refresh_url: `${origin}/onboard-user/refresh`,
-      return_url: `${origin}/index.html`,
+      return_url: `${origin}/submit.html`,
     })
     .then((link) => link.url);
-  }
-  else{
-    return stripe.accountLinks
-    .create({
-      type: "account_onboarding",
-      account: accountID,
-      refresh_url: `${origin}/onboard-user/refresh`,
-      return_url: `${origin}/success.html`,
-    })
-    .then((link) => link.url);
-  }
   
 }
-
-// Match the raw body to content type application/json
-app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
-  let event;
-
-  try {
-    event = JSON.parse(request.body);
-  } catch (err) {
-    response.status(400).send(`Webhook Error: ${err.message}`);
-  }
-
-  // Handle the event
-  switch (event.type) {
-    case 'account.updated':
-      const accountIntent = event.data.object;
-      console.log('account Intent: ' + accountIntent);
-      window.location = '/success.html'
-      // Then define and call a method to handle the successful payment intent.
-      // handlePaymentIntentSucceeded(paymentIntent);
-      break;
-    case 'payment_method.attached':
-      const paymentMethod = event.data.object;
-      console.log('payment method: ' + paymentMethod);
-      // Then define and call a method to handle the successful attachment of a PaymentMethod.
-      // handlePaymentMethodAttached(paymentMethod);
-      break;
-    // ... handle other event types
-    default:
-      console.log(`Unhandled event type ${event.type}`);
-  }
-
-  // Return a response to acknowledge receipt of the event
-  response.json({received: true});
-});
-
-app.listen(8000, () => console.log('Running on port 8000'));
 
 app.listen(port, () => console.log(`Node server listening on port ${port}!`));
 

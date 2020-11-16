@@ -9,26 +9,26 @@ const stripeAccountPromise = new Promise((resolve, reject) => {
           },
   }).then(res =>  res.json())
   .then(data => {
+    console.log('data is' + data.details)
     const{
-      result
-    } = data
-    console.log(result);
-    if(result){
+      result, details
+    } = data;
+    console.log('result is ' + result + details);
+    if(result && details){
       resolve(result);
     }
     else{
-    reject('no result');
+    reject('/index.html');
     }
   });
-});
+}).catch(e => window.location = e );
 
 stripeAccountPromise.then((accountID) => {
-  console.log('accountID: ' + accountID);
-
   const firebasePromise = new Promise((resolve, reject) => {
 
     firebase.auth().onAuthStateChanged(function(user){
       if(user){
+          document.getElementById("success-message").innerHTML = 'You have successfully registered with Waltz!';
           console.log('user signed in');
           console.log(user.email);
           resolve(user.email);
