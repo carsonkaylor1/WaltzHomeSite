@@ -108,7 +108,7 @@ async function generateAccountLink(accountID, origin) {
       type: "account_onboarding",
       account: accountID,
       refresh_url: `${origin}/onboard-user/refresh`,
-      return_url: `${origin}/submit.html`,
+      return_url: `${origin}/redirect.html`,
     })
     .then((link) => link.url);
   

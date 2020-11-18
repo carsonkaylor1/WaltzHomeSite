@@ -261,11 +261,11 @@ button {
 	text-align: center;
 }
 
-.success-message-box{
+.success-message-box, .redirect-box{
 	text-align: center;
 }
 
-#success-message{
+#success-message, #redirect-message{
 	font-family: 'Cormorant Garamond', serif;
 	font-size: 36px;
 	font-weight: 500;
@@ -330,11 +330,11 @@ button {
 		/* overflow-y: hidden; */
 	  }
 	  
-	  .success-message-box{
+	  .success-message-box, .redirect-box{
 		width: 50%;
 		margin-left: 25%;
 	}
-	  #success-message{
+	  #success-message, #redirect-message{
 		font-size: 24px;
 	}
 	

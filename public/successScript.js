@@ -28,7 +28,6 @@ stripeAccountPromise.then((accountID) => {
 
     firebase.auth().onAuthStateChanged(function(user){
       if(user){
-          // document.getElementById("success-message").innerHTML = 'You have successfully registered with Waltz!';
           console.log('user signed in');
           console.log(user.email);
           resolve(user.email);
@@ -41,8 +40,7 @@ stripeAccountPromise.then((accountID) => {
   });
   
   firebasePromise.then((email) => {
-    console.log(email);
-    document.getElementById("success-message").innerHTML = 'You have successfully registered with Waltz!';
+    console.log(email);    
     var sellerRef = firebase.firestore().collection("sellers");
     sellerRef.where('email', '==', email).get()
     .then(function(querySnapshot) {
@@ -67,7 +65,12 @@ stripeAccountPromise.then((accountID) => {
       console.log("Error getting documents: ", error);
     });
     
-  });
+  }).then(function(){
+    console.log('success!')
+    window.location = './submit.html'
+  }
+
+  )
 
 
  })
