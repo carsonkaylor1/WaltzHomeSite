@@ -18,7 +18,7 @@ const stripeAccountPromise = new Promise((resolve, reject) => {
       resolve(result);
     }
     else{
-    reject('/index.html');
+    reject('/home');
     }
   });
 }).catch(e => window.location = e );

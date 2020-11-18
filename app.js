@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + "/index.html");
+  const path = resolve(process.env.STATIC_DIR + "/home");
   res.sendFile(path);
 });
 
