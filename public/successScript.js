@@ -66,7 +66,7 @@ stripeAccountPromise.then((accountID) => {
     });
     
   }).then(function(){
-    window.location = './submit'
+    // window.location = './submit'
   }
 
   )
