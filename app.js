@@ -41,6 +41,10 @@ app.use(session({
     secret: 'keyboard cat'
 }))
 
+// app.use(express.static(pathToBaseFolderOfStaticContent, {
+//   extensions: ['html', 'htm']
+// }));
+
 // Use JSON parser for all non-webhook routes
 app.use((req, res, next) => {
   if (req.originalUrl === "/webhook") {

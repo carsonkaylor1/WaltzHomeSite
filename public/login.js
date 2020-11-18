@@ -4,7 +4,7 @@
                         if(user){
                             console.log('user signed in');
                             console.log(user);
-                            window.location = '/index.html'
+                            window.location.href = '/index'
                         }
                         else{
                             console.log('user not signed in');
