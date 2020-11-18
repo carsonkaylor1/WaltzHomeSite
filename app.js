@@ -70,8 +70,18 @@ app.post("/get-accounts", async (req, res) => {
 
 app.post("/onboard-user", async (req, res) => {
   try {
-    const account = await stripe.accounts.create({type: "express"});
+    const account = await stripe.accounts.create({
+      type: "express",
+      settings: {
+        payouts: {
+          schedule: {
+            interval: "manual"
+          }
+        }
+      }
+    });
     req.session.accountID = account.id;
+    console.log(req);
     const origin = `${req.headers.origin}`;
     const accountLinkURL = await generateAccountLink(account.id, origin);
     res.send({ url: accountLinkURL });
