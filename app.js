@@ -30,7 +30,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var MemoryStore = require('memorystore')(session)
-app.use(express.static(__dirname + '/public', {index: 'login.html'})); 
+app.use(express.static(__dirname + '/public', {
+  index: 'login.html',
+  extensions: ['html', 'htm']})); 
 app.use(session({
     cookie: { maxAge: 86400000 },
     store: new MemoryStore({
@@ -122,7 +124,7 @@ async function generateAccountLink(accountID, origin) {
       type: "account_onboarding",
       account: accountID,
       refresh_url: `${origin}/onboard-user/refresh`,
-      return_url: `${origin}/redirect.html`,
+      return_url: `${origin}/redirect`,
     })
     .then((link) => link.url);
   
