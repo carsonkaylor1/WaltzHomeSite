@@ -7,6 +7,7 @@ const session = require("express-session");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const Nexmo = require("nexmo");
 var firebase = require("firebase/app");
+var accountIdentification;
 
 // Add the Firebase products that you want to use
 require("firebase/auth");
@@ -67,9 +68,11 @@ app.post("/get-accounts", async (req, res) => {
     limit: 1
   });
   console.log("get accounts: " + accounts.data[0].id);
+  console.log('account identification: ' + accountIdentification);
   console.log('requirements ' + accounts.data[0].details_submitted);
   res.send({
     result: accounts.data[0].id,
+    // result: accountIdentification,
     details: accounts.data[0].details_submitted
   })
 })
@@ -87,16 +90,22 @@ app.post("/onboard-user", async (req, res) => {
       }
     });
     req.session.accountID = account.id;
+    accountIdentification = account.id;
     console.log("onboard user " + account.id)
+    console.log(account)
     const origin = `${req.headers.origin}`;
     const accountLinkURL = await generateAccountLink(account.id, origin);
-    res.send({ url: accountLinkURL });
+    res.send({ url: accountLinkURL, acctID: account.id });
   } catch (err) {
     res.status(500).send({
       error: err.message,
     });
   }
 });
+
+app.get("/finish-onboard", async (req, res) =>{
+  console.log('session id: ' + req.session.accountID)
+})
 
 app.get("/onboard-user/refresh", async (req, res) => {
   

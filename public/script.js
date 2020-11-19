@@ -15,6 +15,8 @@ if (elmButton) {
         .then(response => response.json())
         .then(data => {
           if (data.url) {
+            console.log(data.url)
+            console.log('data.accountID ' + data.acctID);
             window.location = data.url;
           } else {
             elmButton.removeAttribute("disabled");

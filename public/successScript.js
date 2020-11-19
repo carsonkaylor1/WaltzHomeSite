@@ -1,5 +1,14 @@
 let userEmail;
 
+// fetch('/finish-onboard', {
+//   method: "GET",
+//   headers: {
+//           'Accept': 'application/json',
+//           'Content-type': 'application/json'
+//         },
+// })
+
+// console.log('acctValue '+ acctValue)
 const stripeAccountPromise = new Promise((resolve, reject) => {
   fetch('/get-accounts', {
     method: "POST",
