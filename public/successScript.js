@@ -58,7 +58,7 @@ stripeAccountPromise.then((accountID) => {
           var sellerDoc = sellerRef.doc(doc.id);
           var sellerConnectedAccountIDValue = doc.data().connectedAccountId;
           console.log('value is ' + sellerConnectedAccountIDValue);
-          if(!sellerConnectedAccountIDValue){
+          if(!sellerConnectedAccountIDValue){ //Check if there is already a value fore connectedAccountId in firebase
             sellerDoc.update({
               connectedAccountId: accountID
             })
@@ -75,7 +75,7 @@ stripeAccountPromise.then((accountID) => {
     });
     
   }).then(function(){
-    // window.location = './submit'
+    window.location = './submit'
   }
 
   )
