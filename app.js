@@ -7,7 +7,6 @@ const session = require("express-session");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const Nexmo = require("nexmo");
 var firebase = require("firebase/app");
-var accountIdentification;
 
 // Add the Firebase products that you want to use
 require("firebase/auth");
@@ -68,7 +67,6 @@ app.post("/get-accounts", async (req, res) => {
     limit: 1
   });
   console.log("get accounts: " + accounts.data[0].id);
-  console.log('account identification: ' + accountIdentification);
   console.log('requirements ' + accounts.data[0].details_submitted);
   res.send({
     result: accounts.data[0].id,
@@ -90,7 +88,6 @@ app.post("/onboard-user", async (req, res) => {
       }
     });
     req.session.accountID = account.id;
-    accountIdentification = account.id;
     console.log("onboard user " + account.id)
     console.log(account)
     const origin = `${req.headers.origin}`;

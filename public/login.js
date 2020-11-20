@@ -1,10 +1,9 @@
-
                 function checkIfLoggedIn(){
                     firebase.auth().onAuthStateChanged(function(user){
                         if(user){
                             console.log('user signed in');
                             console.log(user);
-                            window.location.href = '/home'
+                            window.location.href = '/home';
                         }
                         else{
                             console.log('user not signed in');

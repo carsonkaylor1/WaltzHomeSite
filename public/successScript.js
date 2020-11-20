@@ -1,4 +1,5 @@
 let userEmail;
+let myAccount = localStorage.getItem('account');
 
 // fetch('/finish-onboard', {
 //   method: "GET",
@@ -60,7 +61,7 @@ stripeAccountPromise.then((accountID) => {
           console.log('value is ' + sellerConnectedAccountIDValue);
           if(!sellerConnectedAccountIDValue){ //Check if there is already a value fore connectedAccountId in firebase
             sellerDoc.update({
-              connectedAccountId: accountID
+              connectedAccountId: myAccount
             })
           }
           else{
@@ -75,7 +76,9 @@ stripeAccountPromise.then((accountID) => {
     });
     
   }).then(function(){
-    window.location = './submit'
+    
+    console.log('My Account ' + myAccount);
+    // window.location = './submit'
   }
 
   )
