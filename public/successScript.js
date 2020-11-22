@@ -63,8 +63,10 @@ stripeAccountPromise.then((accountID) => {
           if(!sellerConnectedAccountIDValue){ //Check if there is already a value fore connectedAccountId in firebase
             sellerDoc.update({
               connectedAccountId: myAccount
+            }).then(function() {
+              resolve();
             })
-            resolve();
+            
           }
           else{
             console.log('Already Connected Account ID');
@@ -76,18 +78,7 @@ stripeAccountPromise.then((accountID) => {
       })
       successPromise.then(() => {
         console.log('My Account ' + myAccount);
-        var sellerRef = firebase.firestore().collection("sellers");
-        sellerRef.where('email', '==', email).get()
-        .then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            console.log(doc.id);
-            var sellerConnectedAccountIDValue = doc.data().connectedAccountId;
-            if(sellerConnectedAccountIDValue){
-              window.location = './submit';
-            }
-            else{
-              console.log('not ready');
-            }
+        // window.location = './submit';
       })
       .catch(function(error) {
         console.log('success promise error ' + error);
