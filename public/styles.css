@@ -272,13 +272,15 @@ button {
 }
 
 #sign-in-redirect-box{
-	margin: auto;
+	margin-top: 25px;
 }
+
 
 #sign-in-redirect{
 	padding: 10px 10px;
     border-radius: 5px;
-    width: 25%;
+	width: 25%;
+	margin: auto;
 }
 
 @media only screen and (max-width:767px){
