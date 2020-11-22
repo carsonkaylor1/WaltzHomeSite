@@ -18,23 +18,25 @@ function checkIfLoggedIn(){
             }
           });
       }).catch(e => window.location = e );
+
+      firebasePromise.then((email) => {
+            var sellerRef = firebase.firestore().collection("sellers");
+            sellerRef.where('email', '==', email).get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                  var sellerConnectedAccountIDValue = doc.data().connectedAccountId;
+                  
+                  if (!sellerConnectedAccountIDValue){
+                        window.location = '/submiterrorb'
+                  }
+                  
+              });
+            })
+      })
 }
 
 
-firebasePromise.then((email) => {
-      var sellerRef = firebase.firestore().collection("sellers");
-      sellerRef.where('email', '==', email).get()
-      .then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            var sellerConnectedAccountIDValue = doc.data().connectedAccountId;
-            
-            if (!sellerConnectedAccountIDValue){
-                  window.location = '/submiterrorb'
-            }
-            
-        });
-      })
-})
+
 
 
       
