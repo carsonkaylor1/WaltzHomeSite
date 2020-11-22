@@ -4,17 +4,24 @@ if(!myAccount){
       window.location = './home';
 }
 else{
-      checkAccountID();
+      checkIfLoggedIn();
 }
 
-firebase.auth().onAuthStateChanged(function(user){
-      if(!user){
-            window.location = './signinerror';
-      }
-    });
+function checkIfLoggedIn(){
+      const firebasePromise = new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(function(user){
+            if(user){
+                  resolve(user.email)
+            }
+            else{
+                  reject('./signinerror');
+            }
+          });
+      }).catch(e => window.location = e );
+}
 
 
-function checkAccountID(){
+firebasePromise.then((email) => {
       var sellerRef = firebase.firestore().collection("sellers");
       sellerRef.where('email', '==', email).get()
       .then(function(querySnapshot) {
@@ -27,4 +34,8 @@ function checkAccountID(){
             
         });
       })
-}
+})
+
+
+      
+
