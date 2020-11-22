@@ -3,6 +3,9 @@ let myAccount = sessionStorage.getItem('account');
 if(!myAccount){
       window.location = './home';
 }
+else{
+      checkAccountID();
+}
 
 firebase.auth().onAuthStateChanged(function(user){
       if(!user){
