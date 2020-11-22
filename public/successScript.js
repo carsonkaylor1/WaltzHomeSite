@@ -68,13 +68,19 @@ stripeAccountPromise.then((accountID) => {
           }
           else{
             console.log('Already Connected Account ID');
-            reject(console.log('Already Connected Account ID'));
+            reject('Already Connected Account ID bro');
           }
           
           
       });
       })
-      
+      successPromise.then(() => {
+        console.log('My Account ' + myAccount);
+        // window.location = './submit'
+      })
+      .catch(function(error) {
+        console.log('success promise error ' + error);
+      })
     })
     .catch(function(error) {
       console.log("Error getting documents: ", error);
@@ -82,10 +88,7 @@ stripeAccountPromise.then((accountID) => {
     
   })
 
-  successPromise.then(() => {
-    console.log('My Account ' + myAccount);
-    // window.location = './submit'
-  })
+  
 
  })
 
