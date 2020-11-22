@@ -271,6 +271,11 @@ button {
 	font-weight: 500;
 }
 
+#sign-in-redirect{
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
 @media only screen and (max-width:767px){
 	.main-text{
 		font-size: 24px;
