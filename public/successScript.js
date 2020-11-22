@@ -1,5 +1,6 @@
 let userEmail;
 let myAccount = sessionStorage.getItem('account');
+console.log("my account " + myAccount)
 
 const stripeAccountPromise = new Promise((resolve, reject) => {
   fetch('/get-accounts', {
