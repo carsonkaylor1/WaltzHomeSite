@@ -38,28 +38,22 @@ stripeAccountPromise.then((accountID) => {
 
     firebase.auth().onAuthStateChanged(function(user){
       if(user){
-          console.log('user signed in');
-          console.log(user.email);
           resolve(user.email);
       }
       else{
-          console.log('user not signed in');
-          reject('no email')
+          reject()
       }
     });
   });
   
   firebasePromise.then((email) => {
-    console.log(email);    
     var sellerRef = firebase.firestore().collection("sellers");
     sellerRef.where('email', '==', email).get()
     .then(function(querySnapshot) {
       const successPromise = new Promise((resolve, reject) => {
         querySnapshot.forEach(function(doc) {
-          console.log(doc.id);
           var sellerDoc = sellerRef.doc(doc.id);
           var sellerConnectedAccountIDValue = doc.data().connectedAccountId;
-          console.log('value is ' + sellerConnectedAccountIDValue);
           if(!sellerConnectedAccountIDValue){ //Check if there is already a value fore connectedAccountId in firebase
             sellerDoc.update({
               connectedAccountId: myAccount
@@ -69,19 +63,16 @@ stripeAccountPromise.then((accountID) => {
             
           }
           else{
-            console.log('Already Connected Account ID');
-            reject('Already Connected Account ID bro');
+            reject();
           }
           
           
       });
       })
       successPromise.then(() => {
-        console.log('My Account ' + myAccount);
         window.location = './submit';
       })
-      .catch(function(error) {
-        console.log('success promise error ' + error);
+      .catch(function() {
         window.location = './submiterror';
       })
     })
@@ -89,6 +80,9 @@ stripeAccountPromise.then((accountID) => {
       console.log("Error getting documents: ", error);
     });
     
+  })
+  .catch(function(){
+    window.location = './signinerror';
   })
 
   
