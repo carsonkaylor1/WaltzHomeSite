@@ -29,16 +29,35 @@ if (elmButton) {
 }
 
   function checkIfLoggedIn(){
+    const firebasePromise = new Promise((resolve, reject) => {
                   firebase.auth().onAuthStateChanged(function(user){
                       if(user){
                           document.getElementById('user-email-text').innerHTML += user.email;
+                          resolve(user.email);
                           
                       }
                       else{
                           window.location = '/';
                       }
                   })
-              }
+                })
+                firebasePromise.then((email) => {
+                  var sellerRef = firebase.firestore().collection("sellers");
+                  sellerRef.where('email', '==', email).get()
+                  .then(function(querySnapshot) {
+                  querySnapshot.forEach(function(doc) {
+                  var sellerConnectedAccountIDValue = doc.data().connectedAccountId;
+                  
+                  if (sellerConnectedAccountIDValue){
+                        window.location = '/submiterror'
+                  }
+                  
+              });
+            })
+                })
+    }
+
+
     window.onload = function(){
     checkIfLoggedIn();}
     
