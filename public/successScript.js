@@ -76,7 +76,18 @@ stripeAccountPromise.then((accountID) => {
       })
       successPromise.then(() => {
         console.log('My Account ' + myAccount);
-        window.location = './submit';
+        var sellerRef = firebase.firestore().collection("sellers");
+        sellerRef.where('email', '==', email).get()
+        .then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+            console.log(doc.id);
+            var sellerConnectedAccountIDValue = doc.data().connectedAccountId;
+            if(sellerConnectedAccountIDValue){
+              window.location = './submit';
+            }
+            else{
+              console.log('not ready');
+            }
       })
       .catch(function(error) {
         console.log('success promise error ' + error);
