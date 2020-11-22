@@ -54,7 +54,8 @@ stripeAccountPromise.then((accountID) => {
     var sellerRef = firebase.firestore().collection("sellers");
     sellerRef.where('email', '==', email).get()
     .then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
+      const successPromise = new Promise((resolve, reject) => {
+        querySnapshot.forEach(function(doc) {
           console.log(doc.id);
           var sellerDoc = sellerRef.doc(doc.id);
           var sellerConnectedAccountIDValue = doc.data().connectedAccountId;
@@ -63,26 +64,28 @@ stripeAccountPromise.then((accountID) => {
             sellerDoc.update({
               connectedAccountId: myAccount
             })
+            resolve();
           }
           else{
             console.log('Already Connected Account ID');
+            reject(console.log('Already Connected Account ID'));
           }
           
           
       });
+      })
+      
     })
     .catch(function(error) {
       console.log("Error getting documents: ", error);
     });
     
-  }).then(function(){
-    
+  })
+
+  successPromise.then(() => {
     console.log('My Account ' + myAccount);
     // window.location = './submit'
-  }
-
-  )
-
+  })
 
  })
 
