@@ -66,8 +66,6 @@ app.post("/get-accounts", async (req, res) => {
   const accounts = await stripe.accounts.list({
     limit: 1
   });
-  console.log("get accounts: " + accounts.data[0].id);
-  console.log('requirements ' + accounts.data[0].details_submitted);
   res.send({
     result: accounts.data[0].id,
     // result: accountIdentification,
@@ -88,8 +86,6 @@ app.post("/onboard-user", async (req, res) => {
       }
     });
     req.session.accountID = account.id;
-    console.log("onboard user " + account.id)
-    console.log(account)
     const origin = `${req.headers.origin}`;
     const accountLinkURL = await generateAccountLink(account.id, origin);
     res.send({ url: accountLinkURL, acctID: account.id });
@@ -100,13 +96,8 @@ app.post("/onboard-user", async (req, res) => {
   }
 });
 
-app.get("/finish-onboard", async (req, res) =>{
-  console.log('session id: ' + req.session.accountID)
-})
-
 app.get("/onboard-user/refresh", async (req, res) => {
   
-  // console.log('refresh +' + req.session.accountID)
   if (!req.session.accountID) {
     res.redirect("/");
     return;
