@@ -82,6 +82,7 @@ stripeAccountPromise.then((accountID) => {
       })
       .catch(function(error) {
         console.log('success promise error ' + error);
+        window.location = './submiterror';
       })
     })
     .catch(function(error) {
