@@ -76,7 +76,7 @@ stripeAccountPromise.then((accountID) => {
       })
       successPromise.then(() => {
         console.log('My Account ' + myAccount);
-        // window.location = './submit'
+        window.location = './submit';
       })
       .catch(function(error) {
         console.log('success promise error ' + error);
