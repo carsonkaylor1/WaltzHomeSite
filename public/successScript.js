@@ -1,5 +1,5 @@
 let userEmail;
-let myAccount = localStorage.getItem('account');
+let myAccount = sessionStorage.getItem('account');
 
 // fetch('/finish-onboard', {
 //   method: "GET",

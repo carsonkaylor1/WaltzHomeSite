@@ -17,8 +17,10 @@ if (elmButton) {
           if (data.url) {
             console.log(data.url)
             console.log('data.accountID ' + data.acctID);
-            localStorage.setItem('account', data.acctID);
-            let myAccount = localStorage.getItem('account');
+            // localStorage.setItem('account', data.acctID);
+            sessionStorage.setItem('account', data.acctID);
+            // let myAccount = localStorage.getItem('account');
+            let myAccount = sessionStorage.getItem('account');
             console.log('My Account ' + myAccount);
             window.location = data.url;
           } else {
