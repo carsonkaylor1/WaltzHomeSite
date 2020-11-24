@@ -15,7 +15,7 @@ const stripeAccountPromise = new Promise((resolve, reject) => {
       result, details
     } = data;
     if(result && details){
-      resolve();
+      resolve(result);
     }
     else{
     reject('/home');
@@ -23,7 +23,7 @@ const stripeAccountPromise = new Promise((resolve, reject) => {
   });
 }).catch(e => window.location = e );
 
-stripeAccountPromise.then(() => {
+stripeAccountPromise.then((accountID) => {
   const firebasePromise = new Promise((resolve, reject) => {
 
     firebase.auth().onAuthStateChanged(function(user){
