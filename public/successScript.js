@@ -1,6 +1,5 @@
 let userEmail;
 let myAccount = sessionStorage.getItem('account');
-console.log("my account " + myAccount)
 
 const stripeAccountPromise = new Promise((resolve, reject) => {
   fetch('/get-accounts', {
@@ -15,7 +14,7 @@ const stripeAccountPromise = new Promise((resolve, reject) => {
       result, details
     } = data;
     if(result && details){
-      resolve(result);
+      resolve();
     }
     else{
     reject('/home');
@@ -23,7 +22,7 @@ const stripeAccountPromise = new Promise((resolve, reject) => {
   });
 }).catch(e => window.location = e );
 
-stripeAccountPromise.then((accountID) => {
+stripeAccountPromise.then(() => {
   const firebasePromise = new Promise((resolve, reject) => {
 
     firebase.auth().onAuthStateChanged(function(user){
@@ -60,7 +59,6 @@ stripeAccountPromise.then((accountID) => {
       });
       })
       successPromise.then(() => {
-        console.log(myAccount);
         window.location = './submit';
       })
       .catch(function() {
