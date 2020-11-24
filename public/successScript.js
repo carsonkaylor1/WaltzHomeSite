@@ -60,7 +60,8 @@ stripeAccountPromise.then((accountID) => {
       });
       })
       successPromise.then(() => {
-        window.location = './submit';
+        console.log(myAccount);
+        // window.location = './submit';
       })
       .catch(function() {
         window.location = './submiterror';
