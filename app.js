@@ -111,14 +111,6 @@ app.get("/onboard-user/refresh", async (req, res) => {
   }
 });
 
-app.get("/api-key", async (req, res) => {
-  console.log(firebase.apiKey);
-  res.send({
-    result: firebase.apiKey
-    // result: accountIdentification,
-  })
-})
-
 async function generateAccountLink(accountID, origin) {
     return stripe.accountLinks
     .create({

@@ -27,20 +27,6 @@ if (elmButton) {
   );
 }
 
-fetch('/api-key', {
-  method: "GET",
-  headers: {
-          'Accept': 'application/json',
-          'Content-type': 'application/json'
-        },
-}).then(res =>  res.json())
-.then(data => {
-  const{
-    result
-  } = data;
-  console.log(data)
-})
-
 function checkIfLoggedIn(){
   const firebasePromise = new Promise((resolve, reject) => {
     firebase.auth().onAuthStateChanged(function(user){
