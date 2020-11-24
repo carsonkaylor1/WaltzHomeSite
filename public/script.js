@@ -15,6 +15,7 @@ if (elmButton) {
         .then(response => response.json())
         .then(data => {
           if (data.url) {
+            sessionStorage.setItem('account', data.acctID);
             window.location = data.url;
           } else {
             elmButton.removeAttribute("disabled");
