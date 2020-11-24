@@ -5,38 +5,31 @@
     <title>Waltz Retailer Onboarding</title>
     <meta name="description" content="Get Connected with Stripe Payments"  />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://js.stripe.com/v3/"></script>
-    <!-- <script>const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);</script> -->
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyAwVyTuwLna3gN798rQA406RXIWZ6vU5iA",
-    authDomain: "waltz-c694e.firebaseapp.com",
-    databaseURL: "https://waltz-c694e.firebaseio.com",
-    projectId: "waltz-c694e",
-    storageBucket: "waltz-c694e.appspot.com",
-    messagingSenderId: "305484219833",
-    appId: "1:305484219833:web:6923cf3e23025f971f6268",
-    measurementId: "G-B2971FFR0G"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-  
-</script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyAwVyTuwLna3gN798rQA406RXIWZ6vU5iA",
+        authDomain: "waltz-c694e.firebaseapp.com",
+        databaseURL: "https://waltz-c694e.firebaseio.com",
+        projectId: "waltz-c694e",
+        storageBucket: "waltz-c694e.appspot.com",
+        messagingSenderId: "305484219833",
+        appId: "1:305484219833:web:6923cf3e23025f971f6268",
+        measurementId: "G-B2971FFR0G"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </head>
-
   <body>
     <div class="sr-root">
       <div class="sr-main">
@@ -45,15 +38,12 @@
             <img id="logo" src="https://i.imgur.com/jZGmRz6.png"/>
           </div>
         </header>
-
         <div class="redirect-box">
           <h1 id="redirect-message">Redirecting...</h1>
           <p>Please do not close window.</p>
         </div>        
-        </div>
       </div>
     </div>
-    <!-- <script src="/script.js" defer></script> -->
     <script src="/successScript.js" defer></script>
   </body>
 </html>
