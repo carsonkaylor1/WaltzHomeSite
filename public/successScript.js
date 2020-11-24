@@ -49,14 +49,11 @@ stripeAccountPromise.then(() => {
             }).then(function() {
               resolve();
             })
-            
           }
           else{
             reject();
           }
-          
-          
-      });
+        });
       })
       successPromise.then(() => {
         window.location = './submit';
@@ -68,13 +65,8 @@ stripeAccountPromise.then(() => {
     .catch(function(error) {
       console.log("Error getting documents: ", error);
     });
-    
   })
   .catch(function(){
     window.location = './signinerror';
   })
-
-  
-
- })
-  
+})
