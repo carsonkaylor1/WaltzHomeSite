@@ -19,32 +19,90 @@
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
     <script src="firebase.js"></script>
   </head>
-  <body>
-    <div class="sr-root">
-      <div class="sr-main">
-        <header class="sr-header">
-          <div class="sr-header__logo">
-            <img id="logo" src="https://i.imgur.com/jZGmRz6.png"/>
-          </div>
-        </header>
-        <div class='login-header'>
-          <h1 id='login-title-1'>Welcome to Waltz</h1>
-          <div id='login-title-2-container'>
-            <h1 id='login-title-2'>Please Login with your Retailer Credentials</h1>
-          </div>
-        </div>
-        <div class='input-credentials'>
-          <input id='username' placeholder='Email'>
-          <input id='password' placeholder='Password' type="password">
-        </div>
-        <div class='error-message-text'>
-          <p id='error-message'></p>
-        </div>
-        <div id='submit-button'>
-          <button id='login' onclick='signIn()'>Submit</button>
-          <script src='login.js'></script>
-        </div>        
+  <body style="width: 100%; margin: 0; padding: 0;">
+
+    <div style="background-color: #0099FF; width: 100%; height: 7vh; display: flex;">
+      <h6 style="font-size: 3vh; color: white; margin-left: 5vh; margin-top: 1.8vh;">Waltz</h1>
+      <div style="display: flex; justify-content: flex-end;">
+        <button style="background-color: #0099FF; padding:0; margin-top: 0; margin-left: 130vh;" onclick="location.href='/privacyPolicy'">Privacy Policy</button>
+        <button style="background-color: #0099FF; padding:0; margin-left: 3vh; margin-top: 0;" onclick="location.href='/returnsAndRefundPolicy'">Returns and Refunds</button>
+        <button style="background-color: #0099FF; padding:0; margin-left: 3vh; margin-top: 0; margin-right: 5vh;" onclick="location.href='/termsOfUse'">Terms of Use</button>
       </div>
     </div>
+
+
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Home')">Home</button>
+        <button class="tablinks" onclick="openCity(event, 'About')">About</button>
+        <button class="tablinks" onclick="openCity(event, 'Contact')">Contact</button>
+        <button class="tablinks" onclick="openCity(event, 'Onboarding')">Onboarding</button>
+      </div>
+    
+    <!-- Tab content -->
+    <div id="Home" class="tabcontent">
+      <div style="display: flex; justify-content: center;">
+        <div>
+          <div style="display: flex;">
+            <img style="height: 30vh; width: 50vh;" src="./Images/HomeMobileApp.jpg" alt="Italian Trulli">
+            <div style="width: 10vh;"></div>
+            <div style="width: 50vh;">
+              <h1 class="waltz-beginning-paragraph-text">Waltz aims at providing customer an elegant and simple experience when buying products on mobile apps</h1>
+            </div>
+          </div>
+          <div style="display: flex;">
+            <div style="width: 50vh;">
+              <h1 class="waltz-beginning-paragraph-text">Waltz aims at providing customer an elegant and simple experience when buying products on mobile apps</h1>
+            </div>
+            <div style="width: 10vh;"></div>
+            <img style="height: 30vh; width: 50vh;" src="./Images/HomeElegantBlue.jpg" alt="Italian Trulli">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="About" class="tabcontent">
+      <h3>About</h3>
+    </div>
+    
+    <div id="Contact" class="tabcontent">
+      <h3>Contact</h3>
+      <p>Tokyo is the capital of Japan.</p>
+    </div> 
+
+    <div id="Onboarding" class="tabcontent">
+      <div style="display: flex; justify-content: center; margin-top: 30vh;">
+        <div style="display: flex">
+          <div style="margin-top: 4vh;">
+            <input id='username' placeholder='Email'>
+            <input id='password' placeholder='Password' type="password">
+          </div>
+          <div style="margin-left: 5vh;" id='submit-button'>
+            <button id='login' onclick='signIn()'>Submit</button>
+            <script src='login.js'></script>
+          </div> 
+        </div> 
+      </div>
+    </div> 
+
+
+    <script>
+      document.getElementsByClassName('tablinks')[0].click()
+      function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      </script>
+    <div class='error-message-text'>
+      <p id='error-message'></p>
+    </div>     
   </body>
 </html>

@@ -50,28 +50,9 @@
   }
   
   /* Layout */
-  .sr-root {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	max-width: 980px;
-	padding: 48px;
-	align-content: center;
-	justify-content: start;
-	height: auto;
-	min-height: 80vh;
-	margin: 0 auto;
-	margin-top: 15vh;
-	margin-bottom: 0vh;
-	padding-top: 0;
-	padding-bottom: 0;
-	padding-right: 5%;
-	padding-left: 5%;
-  }
   .sr-header {
 	margin-bottom: 32px;
   }
-  .sr-main,
   .sr-content {
 	display: flex;
 	flex-direction: column;
@@ -176,23 +157,12 @@ button {
 	/* font-family: 'Raleway', sans-serif; */
 	/* font-family: 'Quicksand', sans-serif; */
 	font-family: 'Cormorant Garamond', serif;
-	font-weight: 600;
+	font-weight: bold;
 	text-align: center;
-	font-size: 32px;
+	font-size: 2.3vh;
 	margin-top: 25px;
-	margin-bottom: 25px;
+	margin-bottom: 2vh;
 	
-}
-
-.input-credentials{
-	margin: auto;
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-
-#submit-button{
-	margin: auto;
-	justify-content: center;
 }
 
 .main-text-box{
@@ -350,4 +320,54 @@ button {
 		font-size: 24px;
 	}
 	
+}
+
+/* Style the tab */
+.tab {
+	overflow: hidden;
+	display: flex;
+	margin-left: 5vh;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 4vh;
+	color: #0099FF;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+	background-color: rgb(213, 220, 252);
+	outline: none;
+	border: none;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+	background-color: rgb(239, 242, 255);
+	outline: none;
+	border: none;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: none;
+	outline: none;
+  }
+
+  .waltz-beginning-paragraph-text{
+	  font-size: 2vh;
+  }
+
+  *:focus {
+    outline: none;
 }
